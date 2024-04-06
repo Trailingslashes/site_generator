@@ -32,8 +32,8 @@ class TextNode:
             and self.url == other.url
         )
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """
         Return a string representation of the object.
         """
-        return TextNode(self.text, self.text_type, self.url)
+        return f"TextNode({self.text}, {self.text_type}, {self.url})"
