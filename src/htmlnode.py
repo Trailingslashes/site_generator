@@ -20,7 +20,7 @@ class HTMLNode():
 
     def props_to_html(self):
         """
-        A function that converts properties to HTML attributes and returns a string.
+        A method that converts properties to HTML attributes and returns a string.
         """
         if self.props is None:
             return ""
