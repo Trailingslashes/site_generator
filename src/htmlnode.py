@@ -34,3 +34,41 @@ class HTMLNode():
         A special method used to return a printable representation of the object.
         """
         return f"HTMLNode({self.tag}, {self.value}, {self.children}, {self.props})"
+
+
+class LeafNode(HTMLNode):
+    def __init__(self, tag=None, value=None, props=None):
+        """
+        Initializes a LeafNode object.
+
+        Args:
+            tag (str, optional): The HTML tag for the node. Defaults to None.
+            value (str, optional): The value/content of the node. Defaults to None.
+            props (dict, optional): The properties/attributes of the node. Defaults to None.
+        """
+        super().__init__(tag, value, None, props)
+
+    def to_html(self):
+        """
+        Converts the LeafNode object to its HTML representation.
+
+        Returns:
+            str: The HTML representation of the LeafNode object.
+
+        Raises:
+            ValueError: If the value of the node is None.
+        """
+        if self.value is None:
+            raise ValueError("Invalid HTML: no value")
+        if self.tag is None:
+            return self.value
+        return f"<{self.tag}{self.props_to_html()}>{self.value}</{self.tag}>"
+
+    def __repr__(self):
+        """
+        Returns a string representation of the LeafNode object.
+
+        Returns:
+            str: The string representation of the LeafNode object.
+        """
+        return f"LeafNode({self.tag}, {self.value}, {self.props})"
